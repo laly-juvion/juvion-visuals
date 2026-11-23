@@ -3,88 +3,136 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Juvion Visuals</title>
-<meta name="description" content="Interactive showcases and visuals from Juvion's neuromuscular research.">
-<meta property="og:title" content="Juvion Visuals">
-<meta property="og:description" content="Interactive showcases and visuals from Juvion's neuromuscular research.">
+<title>Visuals · Juvion Health Sciences</title>
+<meta name="description" content="Interactive showcases and visuals from Juvion Health Sciences' neuromuscular research.">
+<meta property="og:title" content="Visuals · Juvion Health Sciences">
+<meta property="og:description" content="Interactive showcases and visuals from Juvion Health Sciences' neuromuscular research.">
 <meta property="og:image" content="https://laly-juvion.github.io/juvion-visuals/assets/neuromuscular-showcase-dark.jpg">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#080808">
+<link rel="icon" type="image/png" href="assets/brand/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
-  :root{--o:#EB7D2E;--o2:#FF9A4D;--ink:#F2EEE8;--mut:#9C978F;--line:rgba(255,255,255,.10);--ease:cubic-bezier(.2,.8,.2,1)}
-  *{box-sizing:border-box;margin:0;padding:0;min-width:0}
-  html{background:#000;color-scheme:dark}
-  body{font:400 17px/1.55 'IT',"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:radial-gradient(110% 70% at 50% 0%,#141211 0%,#000 60%) no-repeat,#000;min-height:100vh;overflow-x:clip}
+  /* Design tokens from juvionhs.com */
+  :root{
+    --bg:#080808;--surface:#0f0f0f;--elevated:#141414;--border:rgba(255,255,255,.09);
+    --brand:#fe6603;--brand-dim:rgba(254,102,3,.12);--brand-glow:rgba(254,102,3,.18);
+    --text:#F2EFE9;--text-sec:#9A9590;--text-muted:#4A4845;--radius:12px;--radius-lg:20px;
+    --serif:'Playfair Display',Georgia,'Times New Roman',serif;--sans:'IT',Inter,system-ui,sans-serif;
+    --ease:cubic-bezier(.2,.8,.2,1)
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;min-width:0}
+  html{background:var(--bg);color-scheme:dark}
+  body{font:400 16px/1.6 var(--sans);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:clip;min-height:100vh;
+    background:radial-gradient(80% 50% at 85% 0%,rgba(254,102,3,.07),transparent 60%),radial-gradient(60% 40% at 0% 10%,rgba(255,255,255,.025),transparent 70%),var(--bg)}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1240px;margin:0 auto;padding:0 max(5vw,20px)}
+  img{display:block}
+  .grain{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.035;background-size:180px 180px;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .container{max-width:1200px;margin:0 auto;padding:0 2rem}
 
-  header{padding:clamp(48px,9vw,120px) 0 clamp(36px,6vw,72px)}
-  .eyebrow{display:flex;align-items:center;gap:14px;font:600 14px/1 'IT';letter-spacing:5px;text-transform:uppercase;color:var(--o)}
-  .eyebrow::before{content:"";width:36px;height:2px;background:var(--o);box-shadow:0 0 12px var(--o)}
-  h1{font:300 clamp(44px,7vw,92px)/1.02 'ID';letter-spacing:-.03em;margin-top:22px;text-wrap:balance}
-  .lead{max-width:620px;margin-top:22px;font-size:clamp(17px,1.6vw,20px);color:#BDB7AF}
-  .wave{display:block;width:100%;height:70px;margin-top:clamp(36px,5vw,56px)}
-  .wave path{fill:none;stroke:rgba(235,125,46,.55);stroke-width:2;stroke-linejoin:round}
-  .wave .pulse{stroke:#FFD2AE;stroke-width:3;stroke-dasharray:.06 1;filter:drop-shadow(0 0 6px #FF9A4D);animation:run 6s linear infinite}
+  /* nav, as on juvionhs.com */
+  nav{position:sticky;top:0;z-index:100;background:rgba(8,8,8,.88);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+  .nav-inner{height:80px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .nav-brand{display:flex;align-items:center;gap:8px;border-radius:6px}
+  .nav-brand img{height:26px;width:auto}
+  .logo-sub{font:400 11px/1 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--text-sec)}
+  .nav-link{font:600 13.5px/1 var(--sans);letter-spacing:.01em;color:var(--text-sec);display:inline-flex;align-items:center;gap:.35rem;padding:.6rem 0;transition:color .2s ease}
+  .nav-link:hover{color:var(--text)}
+  .nav-link .arrow{transition:transform .2s ease}.nav-link:hover .arrow{transform:translateX(3px)}
+
+  header{padding:clamp(4rem,9vw,7rem) 0 clamp(2.5rem,5vw,4rem)}
+  .tag-pill{display:inline-flex;align-items:center;padding:.3rem .875rem;background:var(--brand-dim);border:1px solid rgba(254,102,3,.2);border-radius:100px;
+    font:500 11.5px/1.4 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--brand)}
+  h1{font:700 clamp(3.25rem,7vw,5.5rem)/1.05 var(--serif);letter-spacing:-.035em;margin-top:1.5rem;text-wrap:balance}
+  h1 em,h2 em{font-style:italic;color:var(--brand)}
+  .lead{max-width:600px;margin-top:1.5rem;font-size:18px;line-height:1.7;color:var(--text-sec)}
+  .wave{display:block;width:100%;height:70px;margin-top:clamp(2.5rem,5vw,3.5rem)}
+  .wave path{fill:none;stroke:rgba(254,102,3,.5);stroke-width:2;stroke-linejoin:round}
+  .wave .pulse{stroke:#ffd0b0;stroke-width:3;stroke-dasharray:.06 1;filter:drop-shadow(0 0 6px #ff8a3d);animation:run 6s linear infinite}
   @keyframes run{from{stroke-dashoffset:1.06}to{stroke-dashoffset:0}}
 
-  .label{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1px solid var(--line);padding-top:18px;margin-bottom:28px;
-    font:600 13px/1 'IT';letter-spacing:3px;text-transform:uppercase;color:var(--mut)}
-  .grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr))}
-  .card{position:relative;display:flex;flex-direction:column;border-radius:22px;overflow:hidden;background:linear-gradient(180deg,#141314,#0b0b0c);
-    border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5);transition:border-color .4s,transform .5s var(--ease)}
-  .card:hover{border-color:rgba(235,125,46,.45);transform:translateY(-3px)}
+  .section-row{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid var(--border);padding-top:1.5rem;margin-bottom:2rem}
+  .section-heading{font:600 clamp(1.75rem,3vw,2.25rem)/1.15 var(--serif);letter-spacing:-.025em}
+  .count{font:500 13px/1 var(--sans);color:var(--text-sec);letter-spacing:.04em;text-transform:uppercase}
+
+  .grid{display:grid;gap:1.75rem;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr))}
+  .card{display:flex;flex-direction:column;border-radius:var(--radius-lg);overflow:hidden;background:var(--surface);border:1px solid var(--border);
+    box-shadow:0 1px 2px rgba(0,0,0,.4),0 24px 60px rgba(0,0,0,.45);transition:border-color .3s ease,transform .5s var(--ease)}
+  .card:hover{border-color:rgba(254,102,3,.35);transform:translateY(-3px)}
   .card.feature{grid-column:1/-1}
-  .shot{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:#000;flex:none}
+  .shot{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:#000}
   .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s ease,transform 1.2s var(--ease)}
+  .shot::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.35),transparent 35%);pointer-events:none}
   .shot .alt{opacity:0}
   .card:hover .shot .alt{opacity:1}
-  .card:hover .shot img{transform:scale(1.025)}
-  .badge{position:absolute;left:16px;top:16px;z-index:2;padding:8px 13px;border-radius:999px;background:rgba(8,8,9,.7);border:1px solid rgba(255,255,255,.12);
-    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font:500 13px/1 'IT';color:#ECE8E2;display:flex;gap:8px;align-items:center}
-  .badge i{width:8px;height:8px;border-radius:50%;background:var(--o);box-shadow:0 0 10px var(--o)}
-  .body{display:flex;flex-direction:column;gap:22px;padding:clamp(22px,3vw,36px);flex:1}
-  .bl,.br{display:flex;flex-direction:column;gap:14px}
-  .br{gap:18px}
-  .feature .body{flex-direction:row;justify-content:space-between;align-items:flex-end;gap:48px;padding:clamp(26px,3.4vw,44px)}
-  .feature .bl{flex:1.4}.feature .br{flex:1;align-items:flex-end}
-  .feature .tags{justify-content:flex-end}
-  .feature h2{font-size:clamp(30px,3.6vw,46px)}  .meta{font:600 12px/1 'IT';letter-spacing:3px;text-transform:uppercase;color:var(--o)}
-  .card h2{font:300 clamp(28px,3vw,38px)/1.1 'ID';letter-spacing:-.02em;text-wrap:balance}
-  .card p{color:#B7B1A9;font-size:16px}
-  .tags{display:flex;flex-wrap:wrap;gap:8px}
-  .tag{padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);font:500 13px/1 'IT';color:#D6D1CA}
-  .actions{display:flex;flex-wrap:wrap;gap:10px}
-  .btn{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 20px;border-radius:999px;font:600 15px/1 'IT';border:1px solid var(--line);
-    background:rgba(255,255,255,.05);transition:background .25s,border-color .25s}
-  .btn:hover{background:rgba(255,255,255,.1)}
-  .btn.primary{background:var(--o);border-color:var(--o);color:#111}
-  .btn.primary:hover{background:var(--o2)}
-  .btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-  .btn:focus-visible,.shot:focus-visible{outline:2px solid var(--o2);outline-offset:3px}
+  .card:hover .shot img{transform:scale(1.02)}
+  .shot:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
+  .badge{position:absolute;left:1rem;top:1rem;z-index:2}
+  .body{display:flex;flex-direction:column;gap:1.5rem;padding:clamp(1.5rem,3vw,2.25rem);flex:1}
+  .bl,.br{display:flex;flex-direction:column;gap:.875rem}.br{gap:1.25rem}
+  .feature .body{flex-direction:row;justify-content:space-between;align-items:flex-end;gap:3rem;padding:clamp(1.75rem,3.4vw,2.75rem)}
+  .feature .bl{flex:1.4}.feature .br{flex:1;align-items:flex-end}.feature .tags{justify-content:flex-end}
+  .meta{font:500 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--text-sec)}
+  .card h2{font:600 clamp(1.6rem,2.6vw,2.1rem)/1.15 var(--serif);letter-spacing:-.025em;text-wrap:balance}
+  .feature h2{font-size:clamp(1.9rem,3.4vw,2.75rem)}
+  .card p{color:var(--text-sec);line-height:1.75}
+  .tags{display:flex;flex-wrap:wrap;gap:.5rem}
+  .chip{padding:.35rem .8rem;border-radius:100px;border:1px solid var(--border);background:var(--elevated);font:500 12.5px/1.4 var(--sans);color:#CFCAC3}
+  .actions{display:flex;flex-wrap:wrap;gap:.75rem}
+  .btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.75rem;background:var(--brand);color:#fff;font:500 14px/1.4 var(--sans);letter-spacing:.01em;border-radius:8px;
+    box-shadow:0 4px 24px rgba(254,102,3,.3),0 1px 4px rgba(254,102,3,.2);transition:background .2s ease,transform .15s ease,box-shadow .2s ease}
+  .btn-primary:hover{background:#d4571a;box-shadow:0 6px 32px rgba(254,102,3,.45);transform:translateY(-1px)}
+  .btn-primary:active{transform:translateY(0)}
+  .btn-outline{display:inline-flex;align-items:center;padding:.75rem 1.5rem;border:1px solid rgba(254,102,3,.4);color:var(--brand);font:500 14px/1.4 var(--sans);border-radius:8px;transition:background .2s ease,border-color .2s ease}
+  .btn-outline:hover{background:var(--brand-dim);border-color:var(--brand)}
+  .btn-outline:active{transform:scale(.98)}
+  .btn-primary:focus-visible,.btn-outline:focus-visible,.nav-link:focus-visible,.nav-brand:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+  .btn-primary svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 
-  footer{margin-top:clamp(64px,8vw,110px);padding:28px 0 40px;border-top:1px solid var(--line);color:#6f6a64;font-size:14px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  @media (max-width:900px){.feature .body{flex-direction:column;align-items:stretch;gap:22px}.feature .br{align-items:flex-start}.feature .tags{justify-content:flex-start}}
+  footer{margin-top:clamp(4rem,8vw,7rem);border-top:1px solid var(--border)}
+  .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding-top:2rem;padding-bottom:2.5rem;color:var(--text-muted);font-size:13px}
+  .foot a:hover{color:var(--text)}
+  @media (max-width:900px){.feature .body{flex-direction:column;align-items:stretch;gap:1.5rem}.feature .br{align-items:flex-start}.feature .tags{justify-content:flex-start}}
+  @media (max-width:560px){.container{padding:0 1.25rem}.logo-sub{display:none}}
   @media (prefers-reduced-motion:reduce){.wave .pulse{animation:none}.card,.shot img{transition:none}}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="grain" aria-hidden="true"></div>
+<nav>
+  <div class="container nav-inner">
+    <a class="nav-brand" href="https://juvionhs.com" aria-label="Juvion Health Sciences website">
+      <img src="assets/brand/juvion-icon.png" alt="Juvion Health Sciences">
+      <span class="logo-sub">Juvion Health Sciences</span>
+    </a>
+    <a class="nav-link" href="https://juvionhs.com">juvionhs.com <span class="arrow">→</span></a>
+  </div>
+</nav>
+
+<div class="container">
   <header>
-    <div class="eyebrow">Juvion</div>
-    <h1>Visuals</h1>
+    <span class="tag-pill">Visuals</span>
+    <h1>Science you can <em>see</em></h1>
     <p class="lead">Interactive showcases and visuals from our neuromuscular research, made for stands, talks and anyone curious about how nerves and muscles stay connected.</p>
-    <svg class="wave" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path id="w"/><path class="pulse" pathLength="1"/></svg>
+    <svg class="wave" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path/><path class="pulse" pathLength="1"/></svg>
   </header>
 
   <main>
-    <div class="label"><span>All visuals</span><span id="count"></span></div>
+    <div class="section-row"><h2 class="section-heading">All <em>visuals</em></h2><span class="count" id="count"></span></div>
     <div class="grid" id="grid"></div>
   </main>
-
-  <footer><span>© <span id="yr"></span> Juvion</span><span>Made for exhibition stands, talks and the curious.</span></footer>
 </div>
+
+<footer>
+  <div class="container foot">
+    <a class="nav-brand" href="https://juvionhs.com"><img src="assets/brand/juvion-icon.png" alt="" style="height:22px"><span class="logo-sub">Juvion Health Sciences</span></a>
+    <span>© <span id="yr"></span> Juvion Health Sciences · EPFL Innovation Park, Lausanne</span>
+  </div>
+</footer>
 
 <script>
 {
@@ -107,7 +155,7 @@
   document.getElementById('grid').innerHTML=VISUALS.map((v,i)=>`
     <article class="card${i===0?' feature':''}">
       <a class="shot" href="${esc(v.href)}" aria-label="Open ${esc(v.title)}">
-        <span class="badge"><i></i>${i===0?'Latest':esc(v.date)}</span>
+        <span class="tag-pill badge">${i===0?'Latest':esc(v.date)}</span>
         <img src="${esc(v.img)}" alt="Preview of ${esc(v.title)}" loading="lazy">
         ${v.alt?`<img class="alt" src="${esc(v.alt)}" alt="" loading="lazy">`:''}
       </a>
@@ -115,14 +163,14 @@
         <div class="bl"><div class="meta">${esc(v.date)} · ${esc(v.kind)}</div>
         <h2>${esc(v.title)}</h2>
         <p>${esc(v.text)}</p></div>
-        <div class="br"><div class="tags">${v.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
-        <div class="actions">${v.links.map(l=>`<a class="btn${l.primary?' primary':''}" href="${esc(l.href)}">${esc(l.label)}${l.primary?arrow:''}</a>`).join('')}</div></div>
+        <div class="br"><div class="tags">${v.tags.map(t=>`<span class="chip">${esc(t)}</span>`).join('')}</div>
+        <div class="actions">${v.links.map(l=>`<a class="${l.primary?'btn-primary':'btn-outline'}" href="${esc(l.href)}">${esc(l.label)}${l.primary?arrow:''}</a>`).join('')}</div></div>
       </div>
     </article>`).join('');
   document.getElementById('count').textContent=VISUALS.length+(VISUALS.length===1?' visual':' visuals');
   document.getElementById('yr').textContent=new Date().getFullYear();
 
-  // header signal line, echoing the showcase
+  // signal line, echoing the showcase
   let d='M -10 22',x=-10,s=11;const r=()=>{s=(s*9301+49297)%233280;return s/233280;};
   while(x<1215){const dep=30+r()*14;d+=` L ${x+4} 22 L ${x+8} ${22+dep}`;for(let k=1;k<=5;k++){const f=k/5;d+=` L ${(x+8+30*f).toFixed(1)} ${(22+dep*Math.exp(-3.2*f)).toFixed(1)}`;}x+=44;}
   document.querySelectorAll('.wave path').forEach(p=>p.setAttribute('d',d));

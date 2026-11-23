@@ -3,18 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Neuromuscular Health: Interactive Showcase</title>
+<title>Neuromuscular Health: Interactive Showcase · Juvion Health Sciences</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="icon" type="image/png" href="../assets/brand/favicon-64.png">
 <style>
   /*
     VOICE   calm, scientific, premium, a gallery wall at night
     IDEA    one signal, travelling from nerve to muscle to a whole life
     PICTURE the team's own micrographs, framed like museum plates, joined by live zoom beams and signals
-    COLOUR  black ground, warm orange signal #EB7D2E, the science's own red / blue / green only in legends
+    COLOUR  black ground, warm orange signal #fe6603, the science's own red / blue / green only in legends
     TYPE    Inter Display Light for titles, Inter for everything else
   */
   :root{
-    --o:#EB7D2E; --o2:#FF9A4D; --ink:#F2EEE8; --mut:#9C978F; --dim:#5E5A55;
+    --o:#fe6603; --o2:#ff8a3d; --ink:#F2EFE9; --mut:#9A9590; --dim:#5E5A55;
     --glass:rgba(20,19,21,.72); --line:rgba(255,255,255,.10);
     --ease:cubic-bezier(.2,.8,.2,1); --out:cubic-bezier(.16,1,.3,1);
     --R:#FF4A3D; --B:#5A6BFF; --G:#5FE07A; --G2:#C6F25A; --V:#6A45FF;
@@ -27,7 +31,7 @@
   button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
   #viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
-  #stage{position:relative;width:1920px;height:1080px;flex:none;overflow:hidden;background:radial-gradient(120% 90% at 50% 40%,#0b0a0b 0%,#000 70%)}
+  #stage{position:relative;width:1920px;height:1080px;flex:none;overflow:hidden;background:radial-gradient(120% 90% at 50% 40%,#100e0c 0%,#080808 70%)}
   #fx{position:absolute;inset:0;width:1920px;height:1080px;z-index:0}
 
   .slide{position:absolute;inset:0;z-index:1;opacity:0;visibility:hidden;transition:opacity 1.2s ease,visibility 0s linear 1.2s}
@@ -83,11 +87,11 @@
   .beam{fill:none;stroke:rgba(255,255,255,.55);stroke-width:1.4}
   .beamfill{fill:url(#beamGrad);opacity:0;transition:opacity 1.2s ease calc(var(--d,0s)*var(--k))}
   .in .beamfill{opacity:1}
-  .roi{fill:none;stroke:var(--o);stroke-width:2.5;filter:drop-shadow(0 0 6px rgba(235,125,46,.9))}
+  .roi{fill:none;stroke:var(--o);stroke-width:2.5;filter:drop-shadow(0 0 6px rgba(254,102,3,.9))}
 
   /* slide 1: oscilloscope sweep line on the recording */
   .scan{position:absolute;top:0;bottom:0;width:2px;left:0;background:linear-gradient(180deg,transparent,var(--o2),transparent);
-    box-shadow:0 0 18px 4px rgba(235,125,46,.55);opacity:0}
+    box-shadow:0 0 18px 4px rgba(254,102,3,.55);opacity:0}
   .in .scan{animation:scan 5.5s cubic-bezier(.45,.05,.4,1) calc(var(--d,0s)*var(--k)) infinite}
   @keyframes scan{0%{left:0;opacity:0}5%{opacity:1}45%{left:100%;opacity:1}50%,100%{left:100%;opacity:0}}
   .flow{position:absolute;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:#fff;box-shadow:0 0 14px 4px var(--o);opacity:0}
@@ -98,59 +102,59 @@
   .agelabel .sm{font:600 15px/1 'IT';letter-spacing:4px;color:var(--mut);text-transform:uppercase;margin-top:12px}
   .axis .track{position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:rgba(255,255,255,.08);border-radius:2px}
   .axis .fill{position:absolute;left:0;top:50%;height:2px;margin-top:-1px;width:100%;transform-origin:0 50%;transform:scaleX(0);
-    background:linear-gradient(90deg,var(--o2),var(--o) 40%,rgba(235,125,46,.25));box-shadow:0 0 14px rgba(235,125,46,.5);
+    background:linear-gradient(90deg,var(--o2),var(--o) 40%,rgba(254,102,3,.25));box-shadow:0 0 14px rgba(254,102,3,.5);
     transition:transform 5s cubic-bezier(.5,0,.4,1) calc(var(--d,0s)*var(--k))}
   .in .axis .fill{transform:scaleX(1)}
   .node{position:absolute;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:#000;border:2px solid #444;
     transition:border-color .5s ease calc(var(--d,0s)*var(--k)),box-shadow .5s ease calc(var(--d,0s)*var(--k)),background .5s ease calc(var(--d,0s)*var(--k))}
-  .in .node{border-color:var(--o);background:var(--o);box-shadow:0 0 0 6px rgba(235,125,46,.16),0 0 20px rgba(235,125,46,.7)}
-  .in .node.fade{background:#2a1a10;box-shadow:0 0 0 6px rgba(235,125,46,.08)}
+  .in .node{border-color:var(--o);background:var(--o);box-shadow:0 0 0 6px rgba(254,102,3,.16),0 0 20px rgba(254,102,3,.7)}
+  .in .node.fade{background:#2a1a10;box-shadow:0 0 0 6px rgba(254,102,3,.08)}
   .axis .cap{position:absolute;top:50%;transform:translateY(-50%);font:600 14px/1 'IT';letter-spacing:4px;color:var(--mut);white-space:nowrap}
 
   /* slide 3 */
   .nr{mix-blend-mode:screen;animation:float 14s ease-in-out infinite alternate}
   @keyframes float{from{transform:translate(0,0)}to{transform:translate(-14px,10px)}}
   .wave path{fill:none;stroke-linejoin:round;stroke-linecap:round}
-  .wave .base{stroke:rgba(235,125,46,.78);stroke-width:3;filter:drop-shadow(0 0 6px rgba(235,125,46,.45))}
-  .wave .pulse{stroke:#FFD2AE;stroke-width:4.5;stroke-dasharray:.05 1;filter:drop-shadow(0 0 10px #FF9A4D) drop-shadow(0 0 22px rgba(235,125,46,.9));opacity:0;transition:opacity .8s ease calc(3.4s*var(--k))}
+  .wave .base{stroke:rgba(254,102,3,.78);stroke-width:3;filter:drop-shadow(0 0 6px rgba(254,102,3,.45))}
+  .wave .pulse{stroke:#FFD2AE;stroke-width:4.5;stroke-dasharray:.05 1;filter:drop-shadow(0 0 10px #ff8a3d) drop-shadow(0 0 22px rgba(254,102,3,.9));opacity:0;transition:opacity .8s ease calc(3.4s*var(--k))}
   .in .wave .pulse{opacity:1}
   .wave .draw{transition-duration:3.4s;transition-timing-function:cubic-bezier(.45,.05,.4,1)}
   .stage-c{position:absolute;width:300px;height:300px;margin:-150px 0 0 -150px}
   .stage-c .disc{position:absolute;inset:30px;border-radius:50%;background:#000}
-  .stage-c .ring{position:absolute;inset:30px;border-radius:50%;border:2px solid rgba(235,125,46,.62);transition:box-shadow .6s ease,border-color .6s ease}
-  .stage-c .ring2{position:absolute;inset:6px;border-radius:50%;border:1px dashed rgba(235,125,46,.22);animation:spin 60s linear infinite}
+  .stage-c .ring{position:absolute;inset:30px;border-radius:50%;border:2px solid rgba(254,102,3,.62);transition:box-shadow .6s ease,border-color .6s ease}
+  .stage-c .ring2{position:absolute;inset:6px;border-radius:50%;border:1px dashed rgba(254,102,3,.22);animation:spin 60s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
   .stage-c .ph{position:absolute;inset:41px;border-radius:50%;overflow:hidden}
   .stage-c .ph img{width:100%;height:100%}
   .stage-c .ph{transition:filter .6s ease}
-  .stage-c.lit .ring{border-color:#FFB37A;border-width:3px;box-shadow:0 0 0 10px rgba(235,125,46,.18),0 0 70px rgba(235,125,46,.75),inset 0 0 30px rgba(235,125,46,.5)}
+  .stage-c.lit .ring{border-color:#FFB37A;border-width:3px;box-shadow:0 0 0 10px rgba(254,102,3,.18),0 0 70px rgba(254,102,3,.75),inset 0 0 30px rgba(254,102,3,.5)}
   .stage-c.lit .ph{filter:brightness(1.18) saturate(1.1)}
   .pl{text-align:center;width:420px;margin-left:-210px}
   .pl .eb{font:600 18px/1 'IT';letter-spacing:5px;color:var(--o)}
   .pl .nm{font:500 34px/1.15 'ID';color:#fff;margin-top:12px;letter-spacing:-.2px}
   .card{border-radius:18px;background:linear-gradient(180deg,#151415,#0d0d0e);border:1.5px solid #2F2D2C;padding:24px 26px;
     box-shadow:0 24px 60px rgba(0,0,0,.5)}
-  .card.first{border:2px solid var(--o);box-shadow:0 0 0 6px rgba(235,125,46,.07),0 24px 60px rgba(0,0,0,.5),0 0 40px rgba(235,125,46,.14)}
+  .card.first{border:2px solid var(--o);box-shadow:0 0 0 6px rgba(254,102,3,.07),0 24px 60px rgba(0,0,0,.5),0 0 40px rgba(254,102,3,.14)}
   .card .h{font:600 31px/1.1 'ID';color:var(--o);letter-spacing:-.2px}
   .card .s{font:600 21px/1.3 'IT';color:#fff;margin-top:10px}
   .card .s + .s{margin-top:0}
   .card .d{font:400 19px/1.35 'IT';color:#B7B1A9;margin-top:6px}
-  .chev{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:1.5px solid rgba(235,125,46,.55);background:#0b0a0a;
+  .chev{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:1.5px solid rgba(254,102,3,.55);background:#0b0a0a;
     display:flex;align-items:center;justify-content:center}
   .chev svg{width:18px;height:18px;stroke:var(--o);stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-  .chev::before,.chev::after{content:"";position:absolute;top:50%;height:1.5px;width:12px;background:rgba(235,125,46,.45)}
+  .chev::before,.chev::after{content:"";position:absolute;top:50%;height:1.5px;width:12px;background:rgba(254,102,3,.45)}
   .chev::before{right:100%}.chev::after{left:100%}
   .in .chev{animation:chev 3.2s ease-in-out infinite;animation-delay:calc(var(--d,0s) + 1s)}
-  @keyframes chev{0%,70%,100%{box-shadow:none;border-color:rgba(235,125,46,.55)}80%{box-shadow:0 0 0 8px rgba(235,125,46,.12),0 0 26px rgba(235,125,46,.6);border-color:var(--o2)}}
+  @keyframes chev{0%,70%,100%{box-shadow:none;border-color:rgba(254,102,3,.55)}80%{box-shadow:0 0 0 8px rgba(254,102,3,.12),0 0 26px rgba(254,102,3,.6);border-color:var(--o2)}}
 
   /* ---------- hotspots ---------- */
   .hs{position:absolute;z-index:5;border-radius:20px;border:2px solid transparent;outline:none;
     transition:box-shadow .6s var(--ease),border-color .4s,background-color .4s}
   .hs.round{border-radius:40px}
-  .explore .hs:hover{border-color:rgba(235,125,46,.45);background:rgba(235,125,46,.04)}
-  .hs.active{border-color:rgba(235,125,46,.95)!important;background:transparent!important;box-shadow:0 0 0 4000px rgba(0,0,0,.66),0 0 46px rgba(235,125,46,.35);z-index:6}
+  .explore .hs:hover{border-color:rgba(254,102,3,.45);background:rgba(254,102,3,.04)}
+  .hs.active{border-color:rgba(254,102,3,.95)!important;background:transparent!important;box-shadow:0 0 0 4000px rgba(0,0,0,.66),0 0 46px rgba(254,102,3,.35);z-index:6}
   .dot{position:absolute;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;pointer-events:none;opacity:0;transform:scale(.4);transition:opacity .5s var(--ease),transform .5s var(--ease)}
-  .dot::before{content:"";position:absolute;inset:11px;border-radius:50%;background:var(--o);box-shadow:0 0 0 3px rgba(0,0,0,.6),0 0 18px rgba(235,125,46,.95)}
+  .dot::before{content:"";position:absolute;inset:11px;border-radius:50%;background:var(--o);box-shadow:0 0 0 3px rgba(0,0,0,.6),0 0 18px rgba(254,102,3,.95)}
   .dot::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--o);animation:ping 2.2s var(--ease) infinite}
   .dot i{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 22px/1 'IT';font-style:normal;color:#111;z-index:1}
   @keyframes ping{0%{transform:scale(.55);opacity:.95}80%,100%{transform:scale(1.65);opacity:0}}
@@ -206,11 +210,11 @@
   .d-close{position:absolute;top:22px;right:22px;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid var(--line);z-index:2}
   .d-close svg{width:22px;height:22px;stroke:#ddd;stroke-width:2.2;fill:none;stroke-linecap:round}
   .d-media{flex:none;border-radius:20px;overflow:hidden;background:#000 center/cover no-repeat;border:1px solid rgba(255,255,255,.08);margin:22px auto 28px}
-  .d-media.round{width:280px;height:280px;border-radius:50%;border:3px solid rgba(235,125,46,.75);box-shadow:0 0 0 12px rgba(235,125,46,.08),0 20px 60px rgba(235,125,46,.18)}
+  .d-media.round{width:280px;height:280px;border-radius:50%;border:3px solid rgba(254,102,3,.75);box-shadow:0 0 0 12px rgba(254,102,3,.08),0 20px 60px rgba(254,102,3,.18)}
   .d-media.none{display:none}
   .d-flow{display:flex;align-items:center;gap:8px;margin:26px 0 34px}.d-flow.none{display:none}
   .fnode{flex:1;padding:16px 8px;border-radius:14px;border:1.5px solid #3A3A3A;background:#111;text-align:center;font:600 15px/1.2 'IT';color:#9b968f}
-  .fnode.on{border-color:var(--o);color:#fff;box-shadow:0 0 24px rgba(235,125,46,.28)}
+  .fnode.on{border-color:var(--o);color:#fff;box-shadow:0 0 24px rgba(254,102,3,.28)}
   .fnode .n{display:block;font-size:13px;color:var(--o);letter-spacing:2px;margin-bottom:4px}
   .farr{color:var(--o);font:700 18px/1 'IT'}
   .d-scroll{flex:1;min-height:0;overflow:auto;scrollbar-width:none}.d-scroll::-webkit-scrollbar{display:none}
@@ -235,6 +239,25 @@
   .on-s2 #hint,.on-s2 #controls,.on-s2 #toast{right:40px}
   @media (prefers-reduced-motion:reduce){.plate .kb,.nr,.ring2{animation:none}}
 </style>
+
+<style>
+  /* ===== Juvion brand layer: matches juvionhs.com (Playfair Display + Inter, #fe6603) ===== */
+  :root{--serif:'Playfair Display',Georgia,'Times New Roman',serif}
+  .title{font:600 62px/1.08 var(--serif);letter-spacing:-.03em}
+  .title .em{font-style:italic;color:var(--o)}
+  .agelabel .big{font:500 46px/1 var(--serif);letter-spacing:-.02em}
+  .pl .nm{font:600 32px/1.15 var(--serif);letter-spacing:-.02em}
+  .card .h{font:600 30px/1.1 var(--serif);letter-spacing:-.02em}
+  .d-title{font:600 42px/1.12 var(--serif);letter-spacing:-.025em}
+  #resume{color:#fff;border-radius:999px;box-shadow:0 4px 24px rgba(254,102,3,.3),0 1px 4px rgba(254,102,3,.2)}
+  #resume .fg{stroke:#fff}#resume .bg{stroke:rgba(255,255,255,.3)}#resume .play svg{fill:#fff}
+  #brand{position:absolute;left:150px;bottom:18px;z-index:20;height:44px;display:flex;align-items:center;gap:13px;padding-right:30px;border-right:1px solid var(--line)}
+  #brand img{height:34px;width:auto;display:block}
+  #brand span{font:500 13px/1 'IT',Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+  #chapters{left:478px}
+  #grain{position:absolute;inset:0;z-index:16;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px}
+  .nr{mix-blend-mode:normal}
+</style>
 </head>
 <body class="attract">
 <div id="viewport"><div id="stage">
@@ -244,7 +267,7 @@
   <section class="slide" data-dur="16000" data-name="The science">
     <div class="content">
       <div class="abs eyebrow a" style="left:150px;top:74px;--d:0s">The science</div>
-      <h1 class="abs title" style="left:146px;top:110px">Neuron–muscle connectivity and communication</h1>
+      <h1 class="abs title" style="left:146px;top:110px">Neuron–muscle connectivity and *communication*</h1>
 
       <svg class="over" viewBox="0 0 1920 1080">
         <defs><linearGradient id="beamGrad" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".10"/><stop offset="1" stop-color="#fff" stop-opacity=".015"/></linearGradient></defs>
@@ -278,7 +301,7 @@
         <rect class="roi draw" pathLength="1" style="--d:4.4s" x="876" y="547" width="44" height="44" rx="6"/>
         <line class="beam draw" pathLength="1" style="--d:4.9s" x1="920" y1="547" x2="1132" y2="236"/>
         <line class="beam draw" pathLength="1" style="--d:4.9s" x1="920" y1="591" x2="1132" y2="536"/>
-        <line class="beam draw" pathLength="1" style="--d:7.0s;stroke:rgba(235,125,46,.8);stroke-dasharray:1" x1="1452" y1="536" x2="1452" y2="580"/>
+        <line class="beam draw" pathLength="1" style="--d:7.0s;stroke:rgba(254,102,3,.8);stroke-dasharray:1" x1="1452" y1="536" x2="1452" y2="580"/>
       </svg>
 
       <div class="abs legend a" style="left:150px;top:962px;--d:8.6s">
@@ -295,7 +318,7 @@
   <section class="slide" data-dur="13000" data-name="The challenge">
     <div class="content">
       <div class="abs eyebrow a" style="left:150px;top:74px;--d:0s">The challenge</div>
-      <h1 class="abs title" style="left:146px;top:110px">Neuron–muscle connectivity degenerates with age</h1>
+      <h1 class="abs title" style="left:146px;top:110px">Neuron–muscle connectivity degenerates *with age*</h1>
       <div class="abs legend a" style="right:150px;top:62px;--d:.6s">
         <span class="lg"><i style="background:#FF2A1F;box-shadow:0 0 10px #FF2A1F"></i>Neurons · Red</span>
         <span class="lg"><i style="background:var(--V);box-shadow:0 0 10px var(--V)"></i>Muscles · Blue</span>
@@ -323,9 +346,9 @@
   <!-- ============ 3 · OUR VISION ============ -->
   <section class="slide" data-dur="16000" data-name="Our vision">
     <div class="content">
-      <div class="abs nr a" style="left:0;top:49px;width:1920px;height:981.6px;--d:.3s"><img data-a="nr" alt="" style="width:100%;height:100%"></div>
+      <div class="abs nr a" style="left:0;top:49px;width:1920px;height:981.6px;--d:.3s"><img data-a="nrl" alt="" style="width:100%;height:100%"></div>
       <div class="abs eyebrow a" style="left:150px;top:74px;--d:0s">Our vision</div>
-      <h1 class="abs title" style="left:146px;top:110px">Neuromuscular health across every stage of life</h1>
+      <h1 class="abs title" style="left:146px;top:110px">Neuromuscular health across *every stage* of life</h1>
 
       <svg class="over wave" viewBox="0 0 1920 1080"><path class="base draw" pathLength="1" style="--d:.4s"/><path class="pulse" pathLength="1"/></svg>
 
@@ -354,6 +377,8 @@
   </section>
 
   <div id="vignette"></div>
+  <div id="grain"></div>
+  <div id="brand"><img src="../assets/brand/juvion-icon.png" alt="Juvion Health Sciences"><span>Juvion Health Sciences</span></div>
   <div id="chapters"></div>
   <div id="hint"><span class="tap"></span>Touch to explore</div>
   <div id="controls">
@@ -376,8 +401,8 @@
 </div></div>
 
 <script>
-const ASSETS={"m1": "img/m1.webp", "m2": "img/m2.webp", "m3": "img/m3.webp", "m4": "img/m4.webp", "y1": "img/y1.webp", "y2": "img/y2.webp", "y3": "img/y3.webp", "nr": "img/nr.webp", "p1": "img/p1.webp", "p2": "img/p2.webp", "p3": "img/p3.webp", "p4": "img/p4.webp"};
-const SIZES={"m1": [672, 1090], "m2": [540, 1080], "m3": [471, 224], "m4": [584, 414], "y1": [938, 1302], "y2": [938, 1302], "y3": [952, 1302], "nr": [2930, 1498]};
+const ASSETS={"nrl": "img/nrl.webp", "m1": "img/m1.webp", "m2": "img/m2.webp", "m3": "img/m3.webp", "m4": "img/m4.webp", "y1": "img/y1.webp", "y2": "img/y2.webp", "y3": "img/y3.webp", "p1": "img/p1.webp", "p2": "img/p2.webp", "p3": "img/p3.webp", "p4": "img/p4.webp"};
+const SIZES={"m1": [672, 1090], "m2": [540, 1080], "m3": [471, 224], "m4": [584, 414], "y1": [938, 1302], "y2": [938, 1302], "y3": [952, 1302]};
 {
 const RED='#FF4A3D',BLUE='#5A6BFF',GREEN='#5FE07A',LIME='#C6F25A',VIOLET='#6A45FF';
 const FLOW=['NeuroGym™','Own products','Pipeline','Therapeutics'];
@@ -434,8 +459,9 @@ function fit(){stage.style.transform=`scale(${Math.min(innerWidth/1920,innerHeig
 addEventListener('resize',fit);fit();
 
 /* split titles into words for the staggered reveal */
-$$('.title').forEach(t=>{const words=t.textContent.trim().split(/\s+/);
-  t.innerHTML=words.map((w,i)=>`<span class="w" style="--wd:${(i*0.07).toFixed(2)}s">${w}</span>`).join(' ');});
+$$('.title').forEach(t=>{let em=false;const words=t.textContent.trim().split(/\s+/);
+  t.innerHTML=words.map((w,i)=>{if(w.startsWith('*'))em=true;const on=em;if(w.endsWith('*'))em=false;w=w.replace(/\*/g,'');
+    return `<span class="w${on?' em':''}" style="--wd:${(i*0.07).toFixed(2)}s">${w}</span>`;}).join(' ');});
 
 /* slide 3 waveform: one continuous recording running through every stage of life */
 (function(){
@@ -583,7 +609,7 @@ function frame(now){
   for(const p of P){p.x+=p.vx*dt*.06;p.y+=p.vy*dt*.06;p.ph+=dt*.0012;
     if(p.y<-10){p.y=1090;p.x=Math.random()*1920;} if(p.x<-10)p.x=1930; if(p.x>1930)p.x=-10;
     const a=p.a*(.6+.4*Math.sin(p.ph));cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);
-    cx.fillStyle=p.warm?`rgba(235,125,46,${a})`:`rgba(130,150,255,${a*.8})`;cx.fill();}
+    cx.fillStyle=p.warm?`rgba(254,102,3,${a})`:`rgba(130,150,255,${a*.8})`;cx.fill();}
   if(cur===2&&slides[2].classList.contains('in')){
     pt=(pt+dt/5200)%1.25;const f=Math.min(pt,1.05);
     pulse.style.strokeDashoffset=(0.05-f).toFixed(4);

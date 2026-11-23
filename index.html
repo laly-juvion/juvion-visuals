@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juvion Visuals</title>
+<meta name="description" content="Interactive showcases and visuals from Juvion's neuromuscular research.">
+<meta property="og:title" content="Juvion Visuals">
+<meta property="og:description" content="Interactive showcases and visuals from Juvion's neuromuscular research.">
+<meta property="og:image" content="https://laly-juvion.github.io/juvion-visuals/assets/neuromuscular-showcase-dark.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#000000">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  :root{--o:#EB7D2E;--o2:#FF9A4D;--ink:#F2EEE8;--mut:#9C978F;--line:rgba(255,255,255,.10);--ease:cubic-bezier(.2,.8,.2,1)}
+  *{box-sizing:border-box;margin:0;padding:0;min-width:0}
+  html{background:#000;color-scheme:dark}
+  body{font:400 17px/1.55 'IT',"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:radial-gradient(110% 70% at 50% 0%,#141211 0%,#000 60%) no-repeat,#000;min-height:100vh;overflow-x:clip}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 max(5vw,20px)}
+
+  header{padding:clamp(48px,9vw,120px) 0 clamp(36px,6vw,72px)}
+  .eyebrow{display:flex;align-items:center;gap:14px;font:600 14px/1 'IT';letter-spacing:5px;text-transform:uppercase;color:var(--o)}
+  .eyebrow::before{content:"";width:36px;height:2px;background:var(--o);box-shadow:0 0 12px var(--o)}
+  h1{font:300 clamp(44px,7vw,92px)/1.02 'ID';letter-spacing:-.03em;margin-top:22px;text-wrap:balance}
+  .lead{max-width:620px;margin-top:22px;font-size:clamp(17px,1.6vw,20px);color:#BDB7AF}
+  .wave{display:block;width:100%;height:70px;margin-top:clamp(36px,5vw,56px)}
+  .wave path{fill:none;stroke:rgba(235,125,46,.55);stroke-width:2;stroke-linejoin:round}
+  .wave .pulse{stroke:#FFD2AE;stroke-width:3;stroke-dasharray:.06 1;filter:drop-shadow(0 0 6px #FF9A4D);animation:run 6s linear infinite}
+  @keyframes run{from{stroke-dashoffset:1.06}to{stroke-dashoffset:0}}
+
+  .label{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1px solid var(--line);padding-top:18px;margin-bottom:28px;
+    font:600 13px/1 'IT';letter-spacing:3px;text-transform:uppercase;color:var(--mut)}
+  .grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr))}
+  .card{position:relative;display:flex;flex-direction:column;border-radius:22px;overflow:hidden;background:linear-gradient(180deg,#141314,#0b0b0c);
+    border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5);transition:border-color .4s,transform .5s var(--ease)}
+  .card:hover{border-color:rgba(235,125,46,.45);transform:translateY(-3px)}
+  .card.feature{grid-column:1/-1}
+  .shot{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:#000;flex:none}
+  .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s ease,transform 1.2s var(--ease)}
+  .shot .alt{opacity:0}
+  .card:hover .shot .alt{opacity:1}
+  .card:hover .shot img{transform:scale(1.025)}
+  .badge{position:absolute;left:16px;top:16px;z-index:2;padding:8px 13px;border-radius:999px;background:rgba(8,8,9,.7);border:1px solid rgba(255,255,255,.12);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font:500 13px/1 'IT';color:#ECE8E2;display:flex;gap:8px;align-items:center}
+  .badge i{width:8px;height:8px;border-radius:50%;background:var(--o);box-shadow:0 0 10px var(--o)}
+  .body{display:flex;flex-direction:column;gap:22px;padding:clamp(22px,3vw,36px);flex:1}
+  .bl,.br{display:flex;flex-direction:column;gap:14px}
+  .br{gap:18px}
+  .feature .body{flex-direction:row;justify-content:space-between;align-items:flex-end;gap:48px;padding:clamp(26px,3.4vw,44px)}
+  .feature .bl{flex:1.4}.feature .br{flex:1;align-items:flex-end}
+  .feature .tags{justify-content:flex-end}
+  .feature h2{font-size:clamp(30px,3.6vw,46px)}  .meta{font:600 12px/1 'IT';letter-spacing:3px;text-transform:uppercase;color:var(--o)}
+  .card h2{font:300 clamp(28px,3vw,38px)/1.1 'ID';letter-spacing:-.02em;text-wrap:balance}
+  .card p{color:#B7B1A9;font-size:16px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);font:500 13px/1 'IT';color:#D6D1CA}
+  .actions{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 20px;border-radius:999px;font:600 15px/1 'IT';border:1px solid var(--line);
+    background:rgba(255,255,255,.05);transition:background .25s,border-color .25s}
+  .btn:hover{background:rgba(255,255,255,.1)}
+  .btn.primary{background:var(--o);border-color:var(--o);color:#111}
+  .btn.primary:hover{background:var(--o2)}
+  .btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .btn:focus-visible,.shot:focus-visible{outline:2px solid var(--o2);outline-offset:3px}
+
+  footer{margin-top:clamp(64px,8vw,110px);padding:28px 0 40px;border-top:1px solid var(--line);color:#6f6a64;font-size:14px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  @media (max-width:900px){.feature .body{flex-direction:column;align-items:stretch;gap:22px}.feature .br{align-items:flex-start}.feature .tags{justify-content:flex-start}}
+  @media (prefers-reduced-motion:reduce){.wave .pulse{animation:none}.card,.shot img{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Juvion</div>
+    <h1>Visuals</h1>
+    <p class="lead">Interactive showcases and visuals from our neuromuscular research, made for stands, talks and anyone curious about how nerves and muscles stay connected.</p>
+    <svg class="wave" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path id="w"/><path class="pulse" pathLength="1"/></svg>
+  </header>
+
+  <main>
+    <div class="label"><span>All visuals</span><span id="count"></span></div>
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <footer><span>© <span id="yr"></span> Juvion</span><span>Made for exhibition stands, talks and the curious.</span></footer>
+</div>
+
+<script>
+{
+  /* Add a new visual by adding an entry to this list (newest first). The first entry is shown large. */
+  const VISUALS=[
+    {
+      title:'Neuromuscular health: interactive showcase',
+      date:'November 2026',
+      kind:'Interactive · Exhibition stand',
+      text:'A looping, touch-to-explore journey from muscle to synapse to a single bouton and its recorded signal, how neuron–muscle connectivity changes with age, and our vision for neuromuscular health across every stage of life.',
+      tags:['3 slides','Touch to explore','Dark & light editions'],
+      href:'neuromuscular-showcase/',
+      img:'assets/neuromuscular-showcase-dark.webp',
+      alt:'assets/neuromuscular-showcase-light.webp',
+      links:[{label:'Open showcase',href:'neuromuscular-showcase/',primary:true},{label:'Light edition',href:'neuromuscular-showcase/light/'}]
+    }
+  ];
+  const arrow='<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  document.getElementById('grid').innerHTML=VISUALS.map((v,i)=>`
+    <article class="card${i===0?' feature':''}">
+      <a class="shot" href="${esc(v.href)}" aria-label="Open ${esc(v.title)}">
+        <span class="badge"><i></i>${i===0?'Latest':esc(v.date)}</span>
+        <img src="${esc(v.img)}" alt="Preview of ${esc(v.title)}" loading="lazy">
+        ${v.alt?`<img class="alt" src="${esc(v.alt)}" alt="" loading="lazy">`:''}
+      </a>
+      <div class="body">
+        <div class="bl"><div class="meta">${esc(v.date)} · ${esc(v.kind)}</div>
+        <h2>${esc(v.title)}</h2>
+        <p>${esc(v.text)}</p></div>
+        <div class="br"><div class="tags">${v.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div>
+        <div class="actions">${v.links.map(l=>`<a class="btn${l.primary?' primary':''}" href="${esc(l.href)}">${esc(l.label)}${l.primary?arrow:''}</a>`).join('')}</div></div>
+      </div>
+    </article>`).join('');
+  document.getElementById('count').textContent=VISUALS.length+(VISUALS.length===1?' visual':' visuals');
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  // header signal line, echoing the showcase
+  let d='M -10 22',x=-10,s=11;const r=()=>{s=(s*9301+49297)%233280;return s/233280;};
+  while(x<1215){const dep=30+r()*14;d+=` L ${x+4} 22 L ${x+8} ${22+dep}`;for(let k=1;k<=5;k++){const f=k/5;d+=` L ${(x+8+30*f).toFixed(1)} ${(22+dep*Math.exp(-3.2*f)).toFixed(1)}`;}x+=44;}
+  document.querySelectorAll('.wave path').forEach(p=>p.setAttribute('d',d));
+}
+</script>
+</body>
+</html>

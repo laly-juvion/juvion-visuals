@@ -1,0 +1,8 @@
+/* Inter & Inter Display (SIL Open Font License), Latin subset */
+@font-face{font-family:'ID';font-weight:300;font-style:normal;font-display:block;src:url(InterDisplay-Light.woff) format('woff')}
+@font-face{font-family:'ID';font-weight:500;font-style:normal;font-display:block;src:url(InterDisplay-Medium.woff) format('woff')}
+@font-face{font-family:'ID';font-weight:600;font-style:normal;font-display:block;src:url(InterDisplay-SemiBold.woff) format('woff')}
+@font-face{font-family:'IT';font-weight:400;font-style:normal;font-display:block;src:url(Inter-Regular.woff) format('woff')}
+@font-face{font-family:'IT';font-weight:500;font-style:normal;font-display:block;src:url(Inter-Medium.woff) format('woff')}
+@font-face{font-family:'IT';font-weight:600;font-style:normal;font-display:block;src:url(Inter-SemiBold.woff) format('woff')}
+@font-face{font-family:'IT';font-weight:700;font-style:normal;font-display:block;src:url(Inter-Bold.woff) format('woff')}
